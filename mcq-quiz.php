@@ -21,6 +21,14 @@
 define( 'WP_DEBUG', true );
 define( 'WP_DEBUG_DISPLAY', true );
 define( 'WP_DEBUG_LOG', true );
+
+/**
+ * Restrict direct access via root
+ * http://localhost/pcsshala/wp-content/plugins/mcq-quiz/mcq-quiz.php
+ */
+if(!defined('ABSPATH')){
+  die("Cannot access !!!");
+}
 /**
  * all the db related things script kept in below files
  */
@@ -38,11 +46,8 @@ register_activation_hook( __FILE__, 'mcq_quiz_activate' );
  * Deactivation hook.
  */
 function mcq_quiz_deactivate() {
-    // Unregister the post type, so the rules are no longer in memory.
-    // unregister_post_type( 'book' );
-    // Clear the permalinks to remove our post type's rules from the database.
-    // flush_rewrite_rules();
-    drop_mcq_table();
+    
+    // drop_mcq_table();
 }
 register_deactivation_hook( __FILE__, 'mcq_quiz_deactivate' );
 
@@ -54,16 +59,31 @@ register_deactivation_hook( __FILE__, 'mcq_quiz_deactivate' );
 add_action('admin_menu', 'mcq_quiz_data_menu');
 
 function mcq_quiz_data_menu() {
-  add_menu_page('MCQ QUIZ', 'MCQ', 8, __FILE__, 'mcq_quiz_list');
+  add_menu_page('ALL QUIZ', 'ALL QUIZ', 'manage_options', 'mcq-quiz-plugin' ,'mcq_quiz_list','',15);
+  add_submenu_page('mcq-quiz-plugin','Add Quizzes', 'Add Quizzes', 'manage_options', 'mcq-add-quizes','mcq_quiz_add');
+}
+function mcq_quiz_add() {
+  // echo "Add quizes page";
+  include_once('admin/admin-crud.php');
 }
 
-function mcq_quiz_list() {
-  // echo "Welcome";
+
+function crud_quiz_question() {
+  include_once('mcq-quiz-list.php');
+}
+
+function mcq_quiz_list($atts) {
+  // $atts = array_change_key_case($atts, CASE_LOWER);
+  $atts =shortcode_atts(array(
+    'cat'=>'DAILY_QUIZ'
+  ), $atts);
+  echo "Welcome".$atts['cat'];
+  global $quiz_category;
+  $quiz_category = $atts['cat'];
   include_once('mcq-quiz-list.php');
 }
 //ADD SHORT_CODE
 add_shortcode('mcq_quiz_shortcode', 'mcq_quiz_list');
-
 //TODO use in template file template
 // do_shortcode('[mcq_quiz_shortcode]')
   

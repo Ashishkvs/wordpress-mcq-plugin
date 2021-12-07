@@ -4,7 +4,7 @@ function create_mcq_quiz_table() {
 global $wpdb;
 global $table_prefix;
 $table = $table_prefix.'mcq_quiz_question';
-$sql = "CREATE TABLE $table (
+$sql = "CREATE TABLE IF NOT EXISTS $table (
     `id` int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
     `category` varchar(200) NOT NULL,
     `question` text NOT NULL,
@@ -51,7 +51,7 @@ function create_mcq_quiz_exam_table() {
   global $wpdb;
   global $table_prefix;
   $table = $table_prefix.'mcq_quiz_exam';
-  $sql = "CREATE TABLE $table (
+  $sql = "CREATE TABLE IF NOT EXISTS $table (
       `id` int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
       `name` varchar(150) NOT NULL,
       `email` varchar(150) NOT NULL,

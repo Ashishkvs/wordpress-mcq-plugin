@@ -1,10 +1,11 @@
 <?php
-function get_mcq_quiz_question() {
+function get_mcq_quiz_question($quiz_category) {
     // create table
     global $wpdb;
     global $table_prefix;
     $table = $table_prefix.'mcq_quiz_question';
-    $sql="SELECT * FROM $table";
+    // $quiz_category = 'DAILY_QUIZ';
+    $sql="SELECT * FROM $table where category LIKE '$quiz_category'";
     $results = $wpdb->get_results($sql);
     // print_r($results);
     return $results;
@@ -19,6 +20,8 @@ function get_mcq_quiz_question() {
   <thead class="thead-dark">
     <tr>
       <th scope="col">#</th>
+
+      <th scope="col">Category</th>
       <th scope="col">Question</th>
       <th scope="col">Option1</th>
       <th scope="col">Option2</th>
@@ -29,7 +32,8 @@ function get_mcq_quiz_question() {
   </thead>
   <tbody>
     <?php 
-         $results= get_mcq_quiz_question();
+    global $quiz_category;
+         $results= get_mcq_quiz_question($quiz_category);
         //  echo "<hr>";
         //  print_r($results);
         $count =0;
@@ -39,6 +43,7 @@ function get_mcq_quiz_question() {
             echo <<<QUESTION
                 <tr>
                     <th scope="row">$count</th>
+                    <td> $result->category </td>
                     <td>  $result->question  </td>
                     <td> $result->option1 </td>
                     <td> $result->option2 </td>
