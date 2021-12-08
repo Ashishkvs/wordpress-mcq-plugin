@@ -1,15 +1,15 @@
 <?php
-function get_mcq_quiz_question($quiz_category) {
-    // create table
-    global $wpdb;
-    global $table_prefix;
-    $table = $table_prefix.'mcq_quiz_question';
-    // $quiz_category = 'DAILY_QUIZ';
-    $sql="SELECT * FROM $table where category LIKE '$quiz_category'";
-    $results = $wpdb->get_results($sql);
-    // print_r($results);
-    return $results;
-}
+// function get_mcq_quiz_question($quiz_category) {
+//     // create table
+//     global $wpdb;
+//     global $table_prefix;
+//     $table = $table_prefix.'mcq_quiz_question';
+//     // $quiz_category = 'DAILY_QUIZ';
+//     $sql="SELECT * FROM $table where category LIKE '$quiz_category'";
+//     $results = $wpdb->get_results($sql);
+//     // print_r($results);
+//     return $results;
+// }
 
 ?>
 <div class="quiz-form">

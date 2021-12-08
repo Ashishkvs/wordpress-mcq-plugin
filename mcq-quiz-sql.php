@@ -82,4 +82,17 @@ function create_mcq_quiz_exam_table() {
     
     $wpdb ->query($sql);
   }
+
+  //Fetching resutl query
+  function get_mcq_quiz_question($quiz_category) {
+    // create table
+    global $wpdb;
+    global $table_prefix;
+    $table = $table_prefix.'mcq_quiz_question';
+    // $quiz_category = 'DAILY_QUIZ';
+    $sql="SELECT * FROM $table where category LIKE '$quiz_category'";
+    $results = $wpdb->get_results($sql);
+    // print_r($results);
+    return $results;
+}
   ?>
