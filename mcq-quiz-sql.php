@@ -83,7 +83,7 @@ function create_mcq_quiz_exam_table() {
     $wpdb ->query($sql);
   }
 
-  //Fetching resutl query
+  //Fetching QUIZ QUESITION based on CTAEGORY NAME query
   function get_mcq_quiz_question($quiz_category) {
     // create table
     global $wpdb;
@@ -94,5 +94,16 @@ function create_mcq_quiz_exam_table() {
     $results = $wpdb->get_results($sql);
     // print_r($results);
     return $results;
+}
+
+//Fetching QUIZ QUESITION based on CATEGORY NAME query
+function get_mcq_quiz_exam_leaderboard($quiz_category) {
+  // create table
+  global $wpdb;
+  global $table_prefix;
+  $table = $table_prefix.'mcq_quiz_exam';
+  $sql="SELECT * FROM $table where quiz_category LIKE '$quiz_category'";
+  $results = $wpdb->get_results($sql);
+  return $results;
 }
   ?>

@@ -15,7 +15,7 @@
     }
 </style>
 <main id="quiz-form-content" role="main" >
-    <h1>Add Quiz System</h1>
+    <h1>Add Quiz</h1>
 
     <form method="post" ">
     <div class="head-menu" >

@@ -14,16 +14,16 @@ echo <<<QUIZ
 <p>Question $count : <span class="float-right" style="float:right;"> 2 points </span></p>
 <div class="quiz-question">
 <p> $result->question</p>
-<input type="radio" class="form-control " value="1" name="answer_$result->id" ><span >$result->option1</span><br>
-<input type="radio" class="form-control " value="2" name="answer_$result->id" ><span >$result->option2</span><br>
-<input type="radio" class="form-control " value="3" name="answer_$result->id" ><span >$result->option3</span><br>
-<input type="radio" class="form-control " value="4" name="answer_$result->id" ><span >$result->option4</span><br>
+<input type="radio" class="" value="1" name="answer_$result->id" ><span >$result->option1</span><br>
+<input type="radio" class="" value="2" name="answer_$result->id" ><span >$result->option2</span><br>
+<input type="radio" class="" value="3" name="answer_$result->id" ><span >$result->option3</span><br>
+<input type="radio" class="" value="4" name="answer_$result->id" ><span >$result->option4</span><br>
 </div>
 </div>
 QUIZ;
 }
 
-echo '<input type="submit" style="float:right;" name="mcq_daily_quiz_form" value="Submit Answer">';
+echo '<input type="submit" class="btn" style="float:right;" name="mcq_daily_quiz_form" value="Submit Answer">';
 echo "</form>";
 }
 
