@@ -1,34 +1,33 @@
 <?php 
-$quiz_search_results= get_mcq_quiz_question($quiz_category);
-$count=0;
-if($quiz_search_results){
-    echo '<div id="ten-countdown" style=" display:inline-block; float:right;margin:15px; background-color:red; color:white; padding:10px;"></div><hr>';
-    echo '<form method="post">';
+global $quiz_category;
+    $quiz_search_results= get_mcq_quiz_question($quiz_category);
+    $count=0;
+    if($quiz_search_results){
+        echo '<div id="ten-countdown" style=" display:inline-block; float:right;margin:15px; background-color:red; color:white; padding:10px;"></div><hr>';
+        echo '<form method="post">';
 
-    foreach( $quiz_search_results as $result ) { 
-        $count++;
-        //echo $result->question;
-        
-echo <<<QUIZ
-<div style="width:auto; padding:10px; margin:5px;">
-<p>Question $count : <span class="float-right" style="float:right;"> 2 points </span></p>
-<div class="quiz-question">
-<p> $result->question</p>
-<input type="radio" class="" value="1" name="answer_$result->id" ><span >$result->option1</span><br>
-<input type="radio" class="" value="2" name="answer_$result->id" ><span >$result->option2</span><br>
-<input type="radio" class="" value="3" name="answer_$result->id" ><span >$result->option3</span><br>
-<input type="radio" class="" value="4" name="answer_$result->id" ><span >$result->option4</span><br>
-</div>
-</div>
-QUIZ;
+        foreach( $quiz_search_results as $result ) { 
+            $count++;
+            //echo $result->question;
+            
+    echo <<<QUIZ
+    <div style="width:auto; padding:10px; margin:5px;">
+        <p>Question $count : <span class="float-right" style="float:right;"> 2 points </span></p>
+        <div class="quiz-question">
+            <p> $result->question</p>
+            <input type="radio" class="radio" value="1" name="answer_$result->id" ><span >$result->option1</span><br>
+            <input type="radio" class="radio" value="2" name="answer_$result->id" ><span >$result->option2</span><br>
+            <input type="radio" class="radio" value="3" name="answer_$result->id" ><span >$result->option3</span><br>
+            <input type="radio" class="radio" value="4" name="answer_$result->id" ><span >$result->option4</span><br>
+        </div>
+    </div>                                      
+    QUIZ;
 }
 
 echo '<input type="submit" class="btn" style="float:right;" name="mcq_daily_quiz_form" value="Submit Answer">';
 echo "</form>";
 }
 
-// todo testing     
-// echo "function ::"+ fetchLeaderBoard('DAILY_QUIZ');
 ?>
 </section>
 <?php 
@@ -44,10 +43,12 @@ if(isset($_POST['mcq_daily_quiz_form'])){
 		'answer_key'=> json_encode($_POST),
 		'quiz_category'=> $quiz_category,
 	);
-	$table_name = 'wp_quiz_exam_answer';
 	$result = $wpdb -> insert($table, $data, $format=NULL);
 	if($result == true) {
 		echo "<script> alert('Answer submitted Successfully')</script>";
+        
+        echo "<script> window.sessionStorage.setItem('QUIZ_CATEGORY', '$quiz_category');</script>";
+        echo "<script> window.location = 'quiz-analysis?q=$quiz_category';</script> ";
 	} else {
 		echo "<script> alert('Error Submission Answer')</script>";
 	}

@@ -61,6 +61,8 @@ function mcq_quiz_data_menu() {
   add_submenu_page('mcq-quiz-plugin','Add Quizzes', 'Add Quizzes', 'manage_options', 'mcq-add-quizes','mcq_quiz_add');
   add_submenu_page('mcq-quiz-plugin','Leaderboard', 'Leaderboard', 'manage_options', 'mcq-quiz-leaderboard','mcq_quiz_leaderboard');
   add_submenu_page('mcq-quiz-plugin','View Answer', 'View Answer', 'manage_options', 'mcq-quiz-view-answer','mcq_quiz_view_answer');
+  add_submenu_page('mcq-quiz-plugin','Quiz Dasboard', 'Quiz Dasboard', 'manage_options', 'mcq-quiz-dashboard','mcq_quiz_dashboard');
+
 }
 function mcq_quiz_add() {
   // echo "Add quizes page";
@@ -70,12 +72,24 @@ function mcq_quiz_leaderboard() {
   // echo "leaderboard page";
   include_once('leaderboard.php');
 }
+function mcq_quiz_dashboard($atts) {
+  // $atts =shortcode_atts(array(
+  //   'cat'=>'DAILY_QUIZ'
+  // ), $atts);
+  // echo "Welcome".$atts['cat'];
+  // global $quiz_category;
+  // $quiz_category = $atts['cat'];
+ include_once('quiz-dashboard.php');
+
+}
 
 function crud_quiz_question() {
   include_once('mcq-quiz-list.php');
 }
 function mcq_quiz_view_answer() {
   include_once('mcq-quiz-view-answer.php');
+  // include_once('leaderboard.php');
+  // include_once('mcq-quiz-view-answer.php');
 }
 
 function mcq_quiz_list($atts) {
@@ -103,6 +117,7 @@ add_shortcode('mcq_quiz_shortcode', 'mcq_quiz_list');
 add_shortcode('mcq_quiz_shortcode_exam', 'mcq_quiz_exam');
 add_shortcode('mcq_quiz_shortcode_leaderboard', 'mcq_quiz_leaderboard');
 add_shortcode('mcq_quiz_shortcode_view_answer', 'mcq_quiz_view_answer');
+add_shortcode('mcq_quiz_shortcode_dashboard', 'mcq_quiz_dashboard');
 //TODO use in template file template
 // do_shortcode('[mcq_quiz_shortcode]')
   
