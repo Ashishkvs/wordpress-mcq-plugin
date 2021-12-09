@@ -46,18 +46,20 @@ if(isset($_POST['mcq_daily_quiz_form'])){
     unset($_POST['username']);
     unset($_POST['email']);
 
+    $json_answer_key = json_encode($_POST);
     $table = $table_prefix.'mcq_quiz_exam';
 	$data = array(
 		'name' => $name,
 		'email' => $email,
-		'answer_key'=> json_encode($_POST),
+		'answer_key'=> $json_answer_key,
 		'quiz_category'=> $quiz_category,
 	);
 	$result = $wpdb -> insert($table, $data, $format=NULL);
 	if($result == true) {
 		echo "<script> alert('Answer submitted Successfully')</script>";
-        
+       
         echo "<script> window.sessionStorage.setItem('QUIZ_CATEGORY', '$quiz_category');</script>";
+        echo "<script> window.sessionStorage.setItem('QUIZ_ANSWER', '$json_answer_key');</script>";
         echo "<script> window.location = 'quiz-analysis?q=$quiz_category';</script> ";
 	} else {
 		echo "<script> alert('Error Submission Answer')</script>";
