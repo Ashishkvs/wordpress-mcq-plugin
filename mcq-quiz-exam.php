@@ -22,24 +22,34 @@ global $quiz_category;
         </div>
     </div>                                      
     QUIZ;
+    }
 }
-
-echo '<input type="submit" class="btn" style="float:right;" name="mcq_daily_quiz_form" value="Submit Answer">';
-echo "</form>";
-}
-
 ?>
+        <input type="text" name="username" required placeholder="Enter Name">
+        <input type="email" name="email" required placeholder="Enter Email">
+        <input type="submit" class="btn" style="float:right;" name="mcq_daily_quiz_form" value="Submit Answer">
+    </form>
 </section>
 <?php 
 //submit quiz answer
 if(isset($_POST['mcq_daily_quiz_form'])){
+    
+    
 	global $quiz_category;
     global $wpdb;
     global $table_prefix;
+    $name=$_POST['username'];
+    $email=$_POST['email'];
+
+    //remove value from json form submit
+    unset($_POST['mcq_daily_quiz_form']);
+    unset($_POST['username']);
+    unset($_POST['email']);
+
     $table = $table_prefix.'mcq_quiz_exam';
 	$data = array(
-		'name' => 'Ashish',
-		'email' => 'ashishkvs@gmail.com',
+		'name' => $name,
+		'email' => $email,
 		'answer_key'=> json_encode($_POST),
 		'quiz_category'=> $quiz_category,
 	);

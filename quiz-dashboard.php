@@ -1,9 +1,9 @@
-<div class="container">
+<!-- <div class="container">
 <button>Restart Quiz</button>
 <button>View Solutions</button>
 <button>Show Leaderboard</button>
 
-</div>
+</div> -->
 <!-- <div class="startquizdetails">
             <p class="totalrightquestionarea">0 of 10 questions answered correctly</p>
             <p class="negativemark">Your Negative Marks (0)</p>
