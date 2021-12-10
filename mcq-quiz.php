@@ -2,7 +2,7 @@
 /**
  * Plugin Name:       MCQ-QUIZ
  * Plugin URI:        https://imagegrafia.com/mcq-quiz/plugins
- * Description:       Set Question with MCQ and time
+ * Description:       Set Question with MCQ and time <code>mcq_quiz_shortcode</code> <code>mcq_quiz_shortcode_exam</code> <code>mcq_quiz_shortcode_view_answer</code> <code>mcq_quiz_shortcode_leaderboard</code>
  * Version:           1.0
  * Requires at least: 5.2
  * Requires PHP:      7.2
@@ -97,7 +97,7 @@ function mcq_quiz_list($atts) {
   $atts =shortcode_atts(array(
     'cat'=>'DAILY_QUIZ'
   ), $atts);
-  echo "Welcome".$atts['cat'];
+  // echo "Welcome".$atts['cat'];
   global $quiz_category;
   $quiz_category = $atts['cat'];
   include_once('mcq-quiz-list.php');
@@ -106,7 +106,7 @@ function mcq_quiz_exam($atts) {
   $atts =shortcode_atts(array(
     'cat'=>'DAILY_QUIZ'
   ), $atts);
-  echo "Welcome".$atts['cat'];
+  // echo "Welcome".$atts['cat'];
   global $quiz_category;
   $quiz_category = $atts['cat'];
   include_once('mcq-quiz-exam.php');

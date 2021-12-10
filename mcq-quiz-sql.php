@@ -90,7 +90,7 @@ function create_mcq_quiz_exam_table() {
     global $table_prefix;
     $table = $table_prefix.'mcq_quiz_question';
     // $quiz_category = 'DAILY_QUIZ';
-    $sql="SELECT * FROM $table where category LIKE '$quiz_category'";
+    $sql="SELECT * FROM $table where category LIKE '$quiz_category' ORDER BY created_at DESC";
     $results = $wpdb->get_results($sql);
     // print_r($results);
     return $results;

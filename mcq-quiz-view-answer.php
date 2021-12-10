@@ -37,7 +37,7 @@ if($quiz_category){
     
     var item = window.sessionStorage.getItem('QUIZ_ANSWER');
     var answers = item ? JSON.parse(item) : {}
-    console.log('ANSWESR',JSON.stringify(answers));
+    // console.log('ANSWESR',JSON.stringify(answers));
     for(let key in answers) {
         console.log(key);
        console.log(answers[key]);
