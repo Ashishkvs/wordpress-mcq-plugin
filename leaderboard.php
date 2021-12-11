@@ -1,6 +1,10 @@
+
+<script>
+(function($){})(jQuery);
+</script>
 <section>
 <h1>Leaderboard</h1>
-<table class="table" border="2">
+<table class="table" border="2" id="leaderboard">
     <thead class="thead-dark">
         <tr>
             <th scope="col">SNO.#</th>
@@ -44,6 +48,46 @@
         $total_negative =0;
         $score_count =0;
         $exam_answers = json_decode($answers, TRUE);
+        // print_r($exam_answers);
+    //    print_r($questions);
+    
+       foreach($questions as  $ques ) {
+           $key = 'answer_'.$ques->id;
+           $total_marks += $ques->mark;
+           $ques_answer = $ques->answer;
+            // echo "user_answer $user_answer";
+           if(isset($exam_answers[$key]) && $exam_answers[$key] == $ques_answer) {
+               $total_score +=$ques->mark;
+           }else if(isset($exam_answers[$key]) && $exam_answers[$key] != $ques_answer) {
+                $total_score -=$ques->mark;
+           }
+       
+       }
+       $percent = ($total_score/$total_marks)*100;
+    //    <b>($percent %)</b>
+        return "$total_score / $total_marks ";
+    }
+
+    // function isAnswerCorrect($question, $option) {
+    //     // echo "<h1>isAnswerCorrect $question->answer <h1>";
+    //         if($question->answer == $option) {
+    //             return true;
+    //         }
+    //         return false;
+    // }
+    // function getQuestion($quesId, $questions) {
+    //     // print_r($questions);
+    //     foreach($questions  as $ques) {
+    //         echo"ques $ques->id  ans $ques->answer ";
+    //         // echo "$ques->id == $quesId";
+    //         if($ques->id == (int)$quesId) {
+    //             echo $ques->id == (int)$quesId;
+    //             return $ques;
+    //         }
+    //     }
+    //     return null;
+    // }
+         // http://localhost/pcsshala/quiz-analysis/?q=CIVIL-QUIZ
         // $answer_sheet = array();
         //TODO fix actual score
         // foreach($exam_answers as $key => $value) {
@@ -61,29 +105,11 @@
         //     //     isAnswerCorrect($temp_ques, $value);
         //     // }
         // }
-        
-        return rand(1,100);
-    }
-
-    function isAnswerCorrect($question, $option) {
-        // echo "<h1>isAnswerCorrect $question->answer <h1>";
-            if($question->answer == $option) {
-                return true;
-            }
-            return false;
-    }
-    function getQuestion($quesId, $questions) {
-        // print_r($questions);
-        foreach($questions  as $ques) {
-            echo"ques $ques->id  ans $ques->answer ";
-            // echo "$ques->id == $quesId";
-            if($ques->id == (int)$quesId) {
-                echo $ques->id == (int)$quesId;
-                return $ques;
-            }
-        }
-        return null;
-    }
-        
 ?>
-<sction>
+<section>
+<script>
+(function($){})(jQuery);
+$(document).ready(function () {
+    $('#leaderboard').DataTable();
+});
+</script>

@@ -120,5 +120,19 @@ add_shortcode('mcq_quiz_shortcode_view_answer', 'mcq_quiz_view_answer');
 add_shortcode('mcq_quiz_shortcode_dashboard', 'mcq_quiz_dashboard');
 //TODO use in template file template
 // do_shortcode('[mcq_quiz_shortcode]')
+
+function mcq_quiz_plugins_style(){
+// wp_enqueue_style('mcqQuizPluginsStyle', plugins_url('style.css',__FILE__));
+wp_enqueue_style('mcqQuizPluginsStyle', '//cdn.datatables.net/1.11.3/css/jquery.dataTables.css');
+}
+
+function mcq_quiz_plugins_scripts(){
+// wp_enqueue_sscript('mcqQuizPluginsStyle', plugins_url('style.css',__FILE__),array('jquery'),false,true));
+// wp_enqueue_script('mcqQuizPluginsScripts', 'https://cdn.datatables.net/1.11.3/js/jquery.dataTables.js',array('jQuery'),false,true);
+wp_enqueue_script('mcqQuizPluginsScripts','https://cdn.datatables.net/1.11.3/js/jquery.dataTables.js',array(),null,true);
   
+}
+add_action('wp_enqueue_scripts','mcq_quiz_plugins_style');
+add_action('wp_enqueue_scripts','mcq_quiz_plugins_scripts');
+
 ?>

@@ -102,7 +102,7 @@ function get_mcq_quiz_exam_leaderboard($quiz_category) {
   global $wpdb;
   global $table_prefix;
   $table = $table_prefix.'mcq_quiz_exam';
-  $sql="SELECT * FROM $table where quiz_category LIKE '$quiz_category'";
+  $sql="SELECT * FROM $table where quiz_category LIKE '$quiz_category' ORDER BY created_at DESC";
   $results = $wpdb->get_results($sql);
   return $results;
 }

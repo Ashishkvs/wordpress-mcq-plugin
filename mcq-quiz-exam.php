@@ -4,7 +4,7 @@ global $quiz_category;
     $count=0;
     if($quiz_search_results){
         echo '<div id="ten-countdown" style=" display:inline-block; float:right;margin:15px; background-color:red; color:white; padding:10px;"></div><hr>';
-        echo '<form method="post">';
+        echo '<form method="post" class="form-inline">';
 
         foreach( $quiz_search_results as $result ) { 
             $count++;
@@ -15,19 +15,19 @@ global $quiz_category;
         <p>Question $count : <span class="float-right" style="float:right;"> 2 points </span></p>
         <div class="quiz-question">
             <p> $result->question</p>
-            <input type="radio" class="radio" value="1" name="answer_$result->id" ><span >$result->option1</span><br>
-            <input type="radio" class="radio" value="2" name="answer_$result->id" ><span >$result->option2</span><br>
-            <input type="radio" class="radio" value="3" name="answer_$result->id" ><span >$result->option3</span><br>
-            <input type="radio" class="radio" value="4" name="answer_$result->id" ><span >$result->option4</span><br>
+            <input type="radio" class="form-control" value="1" name="answer_$result->id" ><span >$result->option1</span><br>
+            <input type="radio" class="form-control" value="2" name="answer_$result->id" ><span >$result->option2</span><br>
+            <input type="radio" class="form-control" value="3" name="answer_$result->id" ><span >$result->option3</span><br>
+            <input type="radio" class="form-control" value="4" name="answer_$result->id" ><span >$result->option4</span><br>
         </div>
     </div>                                      
     QUIZ;
     }
 }
 ?>
-        <input type="text" name="username" required placeholder="Enter Name">
-        <input type="email" name="email" required placeholder="Enter Email">
-        <input type="submit" class="btn" style="float:right;" name="mcq_daily_quiz_form" value="Submit Answer">
+        <input type="text"  class="form-control " name="username" required placeholder="Enter Name">
+        <input type="email" class="form-control m-2"  name="email" required placeholder="Enter Email">
+        <input type="submit" class="btn btn-primary border-3"  name="mcq_daily_quiz_form" value="Submit Answer">
     </form>
 </section>
 <?php 
