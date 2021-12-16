@@ -11,7 +11,7 @@ global $quiz_category;
             //echo $result->question;
             
     echo <<<QUIZ
-    <div style="width:auto; padding:10px; margin:5px;">
+    <div style="width:100%; padding:10px; margin:5px;">
         <p>Question $count : <span class="float-right" style="float:right;"> 2 points </span></p>
         <div class="quiz-question">
             <p> $result->question</p>
