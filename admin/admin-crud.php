@@ -39,6 +39,8 @@
         <label >Option2</label> <br><textarea rows="2" cols="100" type="text" name="option2" required placeholder="Enter Option 2 here"></textarea><br>
         <label >Option3</label> <br><textarea rows="2" cols="100" type="text" name="option3" required placeholder="Enter Option 3 here"></textarea><br>
         <label >Option4</label> <br><textarea rows="2" cols="100" type="text" name="option4" required placeholder="Enter Option 4 here"></textarea><br>
+        <label >Explain Answer</label> <br><textarea rows="2" cols="100" type="text" name="extra" required placeholder="Enter Answer Explanation"></textarea><br>
+
     </div> 
         
 
@@ -61,7 +63,7 @@ if(isset($_POST['admin_quiz_form'])){
         'option4'=> $_POST['option4'],
         'answer'=> $_POST['answer'],
         'mark'=> $_POST['mark'],
-        //    'created_at'=> current_time( 'mysql' ),
+        'extra'=> $_POST['extra']
     );
     $table = $table_prefix.'mcq_quiz_question';
         $result = $wpdb -> insert($table, $data, $format=NULL);

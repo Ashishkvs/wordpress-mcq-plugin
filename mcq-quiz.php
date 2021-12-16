@@ -2,7 +2,7 @@
 /**
  * Plugin Name:       MCQ-QUIZ
  * Plugin URI:        https://imagegrafia.com/mcq-quiz/plugins
- * Description:       Set Question with MCQ and time <code>mcq_quiz_shortcode</code> <code>mcq_quiz_shortcode_exam</code> <code>mcq_quiz_shortcode_view_answer</code> <code>mcq_quiz_shortcode_leaderboard</code>
+ * Description:       Set Question with MCQ and time <code>mcq_quiz_shortcode</code> <code>[mcq_quiz_shortcode_exam cat="CAT_NAME"]</code> <code>mcq_quiz_shortcode_view_answer</code> <code>mcq_quiz_shortcode_leaderboard</code>
  * Version:           1.0
  * Requires at least: 5.2
  * Requires PHP:      7.2
@@ -30,7 +30,7 @@ if(!defined('ABSPATH')){
 /**
  * all the db related things script kept in below files
  */
-require_once('mcq-quiz-sql.php');
+require_once('admin/mcq-quiz-sql.php');
 
 function mcq_quiz_activate() { 
     create_mcq_quiz_table();
@@ -59,9 +59,9 @@ add_action('admin_menu', 'mcq_quiz_data_menu');
 function mcq_quiz_data_menu() {
   add_menu_page('MCQ QUIZ', 'MCQ QUIZ', 'manage_options', 'mcq-quiz-plugin' ,'mcq_quiz_list','',15);
   add_submenu_page('mcq-quiz-plugin','Add Quizzes', 'Add Quizzes', 'manage_options', 'mcq-add-quizes','mcq_quiz_add');
-  add_submenu_page('mcq-quiz-plugin','Leaderboard', 'Leaderboard', 'manage_options', 'mcq-quiz-leaderboard','mcq_quiz_leaderboard');
-  add_submenu_page('mcq-quiz-plugin','View Answer', 'View Answer', 'manage_options', 'mcq-quiz-view-answer','mcq_quiz_view_answer');
-  add_submenu_page('mcq-quiz-plugin','Quiz Dasboard', 'Quiz Dasboard', 'manage_options', 'mcq-quiz-dashboard','mcq_quiz_dashboard');
+  // add_submenu_page('mcq-quiz-plugin','Leaderboard', 'Leaderboard', 'manage_options', 'mcq-quiz-leaderboard','mcq_quiz_leaderboard');
+  // add_submenu_page('mcq-quiz-plugin','View Answer', 'View Answer', 'manage_options', 'mcq-quiz-view-answer','mcq_quiz_view_answer');
+  // add_submenu_page('mcq-quiz-plugin','Quiz Dasboard', 'Quiz Dasboard', 'manage_options', 'mcq-quiz-dashboard','mcq_quiz_dashboard');
 
 }
 function mcq_quiz_add() {
@@ -92,15 +92,8 @@ function mcq_quiz_view_answer() {
   // include_once('mcq-quiz-view-answer.php');
 }
 
-function mcq_quiz_list($atts) {
-  // $atts = array_change_key_case($atts, CASE_LOWER);
-  $atts =shortcode_atts(array(
-    'cat'=>'DAILY_QUIZ'
-  ), $atts);
-  // echo "Welcome".$atts['cat'];
-  global $quiz_category;
-  $quiz_category = $atts['cat'];
-  include_once('mcq-quiz-list.php');
+function mcq_quiz_list() {
+  include_once('admin/admin-mcq-quiz-list.php');
 }
 function mcq_quiz_exam($atts) {
   $atts =shortcode_atts(array(

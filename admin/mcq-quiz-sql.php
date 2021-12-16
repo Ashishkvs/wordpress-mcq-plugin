@@ -95,6 +95,17 @@ function create_mcq_quiz_exam_table() {
     // print_r($results);
     return $results;
 }
+function get_all_mcq_quiz_question() {
+  // create table
+  global $wpdb;
+  global $table_prefix;
+  $table = $table_prefix.'mcq_quiz_question';
+  // $quiz_category = 'DAILY_QUIZ';
+  $sql="SELECT * FROM $table ORDER BY created_at DESC";
+  $results = $wpdb->get_results($sql);
+  // print_r($results);
+  return $results;
+}
 
 //Fetching QUIZ QUESITION based on CATEGORY NAME query
 function get_mcq_quiz_exam_leaderboard($quiz_category) {
