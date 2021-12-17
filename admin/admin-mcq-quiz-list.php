@@ -3,7 +3,7 @@
 </div>
 <h1>Get All Questions <code>[mcq_quiz_shortcode_exam cat="CAT_NAME"]<code></h1>
 
-<table class="table" border="2">
+<table class="table" border="2" id="quiz_question">
   <thead class="thead-dark">
     <tr>
       <th scope="col">#</th>
@@ -46,3 +46,9 @@
    
 </tbody>
 </table>
+
+<script type="text/javascript">
+$(document).ready(function(){
+$('#quiz_question').DataTable();
+});
+</script>

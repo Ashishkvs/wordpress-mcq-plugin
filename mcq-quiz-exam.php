@@ -15,19 +15,23 @@ global $quiz_category;
         <p>Question $count : <span class="float-right" style="float:right;"> 2 points </span></p>
         <div class="quiz-question">
             <p> $result->question</p>
+            <div class="quiz-radio">
             <input type="radio" class="form-control" value="1" name="answer_$result->id" ><span >$result->option1</span><br>
             <input type="radio" class="form-control" value="2" name="answer_$result->id" ><span >$result->option2</span><br>
             <input type="radio" class="form-control" value="3" name="answer_$result->id" ><span >$result->option3</span><br>
             <input type="radio" class="form-control" value="4" name="answer_$result->id" ><span >$result->option4</span><br>
+            </div>
         </div>
     </div>                                      
     QUIZ;
     }
 }
 ?>
-        <input type="text"  class="form-control " name="username" required placeholder="Enter Name">
-        <input type="email" class="form-control m-2"  name="email" required placeholder="Enter Email">
-        <input type="submit" class="btn btn-primary border-3"  name="mcq_daily_quiz_form" value="Submit Answer">
+        <div class="quiz-form">
+            <input type="text"  class="form-control " name="username" required placeholder="Enter Name">
+            <input type="email" class="form-control m-2"  name="email" required placeholder="Enter Email">
+            <input type="submit" class="btn btn-primary border-3"  name="mcq_daily_quiz_form" value="Submit Answer">
+        </div>
     </form>
 </section>
 <?php 
