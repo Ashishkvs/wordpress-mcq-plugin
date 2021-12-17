@@ -41,7 +41,7 @@ if($quiz_category){
     for(let key in answers) {
         console.log(key);
        console.log(answers[key]);
-       document.getElementById('_'+answers[key]+key).style.backgroundColor = "#F2F2FF";
+       document.getElementById('_'+answers[key]+key).style.backgroundColor = "#A9A9A9";
     }
 
 </script>
