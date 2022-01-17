@@ -105,7 +105,7 @@ function countdown( elementName, minutes, seconds )
     updateTimer();
 }
 
-countdown( "ten-countdown", 60, 0 );
+countdown( "ten-countdown", 15, 0 );
 
 </script>
 

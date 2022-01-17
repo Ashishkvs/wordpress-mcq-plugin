@@ -55,7 +55,8 @@
            if(isset($exam_answers[$key]) && $exam_answers[$key] == $ques_answer) {
                $total_score +=$ques->mark;
            }else if(isset($exam_answers[$key]) && $exam_answers[$key] != $ques_answer) {
-                $total_score -=$ques->mark;
+                //TURN ON NEGATIVE MARK    
+            //$total_score -=$ques->mark;
            }
        
        }
