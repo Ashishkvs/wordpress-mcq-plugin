@@ -16,6 +16,7 @@
       <th scope="col">Option4</th>
       <th scope="col">Answer</th>
       <th scope="col">Explanation</th>
+      <th scope="col">Action</th>
     </tr>
   </thead>
   <tbody>
@@ -38,6 +39,9 @@
                     <td> $result->option4 </td>
                     <td> $result->answer </td>
                     <td> $result->extra </td>
+                    <td> <a class="text-danger" href="admin.php?page=mcq-delete-quiz&mcqid=$result->id">Delete</a></td>
+                    
+
 
                 </tr>
             QUESTION;

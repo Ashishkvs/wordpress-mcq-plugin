@@ -8,11 +8,11 @@ $sql = "CREATE TABLE IF NOT EXISTS $table (
     `id` int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
     `category` varchar(200) NOT NULL,
     `question` text NOT NULL,
-    `option1` varchar(255) NOT NULL,
-    `option2` varchar(255) NOT NULL,
-    `option3` varchar(255) NOT NULL,
-    `option4` varchar(255) NOT NULL,
-    `answer` varchar(255) NOT NULL,
+    `option1` text NOT NULL,
+    `option2` text NOT NULL,
+    `option3` text NOT NULL,
+    `option4` text NOT NULL,
+    `answer` text NOT NULL,
     `mark` int(3) NOT NULL,
     `created_at` datetime NOT NULL DEFAULT current_timestamp(),
     `created_by` varchar(100) NOT NULL,
@@ -44,6 +44,22 @@ function insert_mcq_quiz_question_dump_data() {
   (22, 'DAILY-QUIZ', 'Consider the following statements regarding Armed Forces (Special Powers) Act, 1958.\r\n\r\nOne of the special powers under this Act is: Power to use force, including opening fire, even to the extent of causing death if prohibitory orders banning assembly of five or more persons or carrying arms and weapons etc. are in force in the disturbed area\r\nThe Act provides that only Central Government can declare an area as ‘disturbed area’ where AFSPA can be applied.\r\nAs per the Constitution, it shall be the duty of the Union to protect every State against external aggression and internal disturbance.\r\nWhich of the above statements is/are correct?', '1', '2', '3', '4', '3', 10, '2021-12-07 12:49:13', '', '');
   ";
    $wpdb ->query($sql);
+}
+
+function delete_mcq_question($id) {
+  // echo $id;
+  global $wpdb;
+  global $table_prefix;
+  $table = $table_prefix.'mcq_quiz_question';
+  // $sql ="DELETE FROM $table where id = $id ";
+  // echo "deleted record".$sql;
+  $wpdb->show_errors();
+   $count = $wpdb->delete( $table, array( 'id' => $id ) );
+  if($count == 1) {
+    echo "Deleted Record Successfully";
+  } else {
+    echo "Invalid Request made";
+  }
 }
 
 function create_mcq_quiz_exam_table() {

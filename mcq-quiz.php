@@ -59,6 +59,7 @@ add_action('admin_menu', 'mcq_quiz_data_menu');
 function mcq_quiz_data_menu() {
   add_menu_page('MCQ QUIZ', 'MCQ QUIZ', 'manage_options', 'mcq-quiz-plugin' ,'mcq_quiz_list','',15);
   add_submenu_page('mcq-quiz-plugin','Add Quizzes', 'Add Quizzes', 'manage_options', 'mcq-add-quizes','mcq_quiz_add');
+  add_submenu_page('mcq-quiz-plugin','Delete Quiz', 'Delete Quiz', 'manage_options', 'mcq-delete-quiz','mcq_delete_quiz');
   // add_submenu_page('mcq-quiz-plugin','Leaderboard', 'Leaderboard', 'manage_options', 'mcq-quiz-leaderboard','mcq_quiz_leaderboard');
   // add_submenu_page('mcq-quiz-plugin','View Answer', 'View Answer', 'manage_options', 'mcq-quiz-view-answer','mcq_quiz_view_answer');
   // add_submenu_page('mcq-quiz-plugin','Quiz Dasboard', 'Quiz Dasboard', 'manage_options', 'mcq-quiz-dashboard','mcq_quiz_dashboard');
@@ -67,6 +68,9 @@ function mcq_quiz_data_menu() {
 function mcq_quiz_add() {
   // echo "Add quizes page";
   include_once('admin/admin-crud.php');
+}
+function mcq_delete_quiz() {
+  include_once('admin/mcq-delete.php');
 }
 function mcq_quiz_leaderboard() {
   // echo "leaderboard page";
