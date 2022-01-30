@@ -20,6 +20,7 @@
             $questions = get_mcq_quiz_question($quiz_category);
             $serial_number =0;
             foreach($results as $result) { 
+                $time = $result->created_at;
                 $serial_number++;
                 $score= getScore($result->answer_key, $questions);
                 // print_r($result);
@@ -28,7 +29,7 @@
                         <th scope="row">$serial_number</th>
                         <td> $result->name </td>
                         <td> $score  </td>
-                        <td> $result->created_at </td>
+                        <td> $time  </td>
                     </tr>
                 LEADERBOARD;
             }

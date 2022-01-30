@@ -10,7 +10,7 @@
  * Author URI:        https://imagegrafia.com/ashishyadhuvanshi
  * License:           GPL v2 or later
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
- * Update URI:        https://example.com/my-plugin/
+ * Update URI:        https://imagegrafia.com/my-plugin/
  * Text Domain:       MCQ-QUIZ-PLUGINS
  * Domain Path:       /languages
  */
@@ -118,19 +118,19 @@ add_shortcode('mcq_quiz_shortcode_dashboard', 'mcq_quiz_dashboard');
 //TODO use in template file template
 // do_shortcode('[mcq_quiz_shortcode]')
 function mcq_quiz_plugins_style(){
-wp_enqueue_style('mcqQuizPluginsStyle', plugins_url('style.css',__FILE__));
-wp_enqueue_style('mcqQuizPluginsStyle', 'http://cdn.datatables.net/1.10.13/css/jquery.dataTables.min.css');
+  $ver = filemtime(plugin_dir_path(__FILE__).'style.css');
+  wp_enqueue_style('mcqQuizPluginsStyle1', plugins_url('style.css', __FILE__), '', $ver);
+  wp_enqueue_style('mcqQuizPluginsStyle2', '//cdn.datatables.net/1.10.13/css/jquery.dataTables.min.css');
 }
 
 function mcq_quiz_plugins_scripts(){
-  wp_enqueue_style('jquery-datatables-css','//cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css');
-        wp_enqueue_script('jquery-datatables-js','//cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js',array('jquery'));
-// wp_enqueue_sscript('mcqQuizPluginsStyle', plugins_url('style.css',__FILE__),array('jquery'),false,true));
-// wp_enqueue_script('mcqQuizPluginsScripts', 'https://cdn.datatables.net/1.11.3/js/jquery.dataTables.js',array('jQuery'),false,true);
-// wp_enqueue_script('mcqQuizPluginsScripts','https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js',array(),null,true);
-  
+  $ver = '1.10.22';
+  wp_enqueue_script('jquery-datatables-js','//cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js', array('jquery'), $ver, true);
 }
+
+
 add_action('wp_enqueue_scripts','mcq_quiz_plugins_style');
-add_action('wp_enqueue_scripts','mcq_quiz_plugins_scripts',10);
+add_action('wp_enqueue_scripts','mcq_quiz_plugins_scripts',18);
+
 
 ?>

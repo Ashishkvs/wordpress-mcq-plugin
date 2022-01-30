@@ -1,39 +1,42 @@
+<section class="quiz-exam">
 <?php 
 global $quiz_category;
     $quiz_search_results= get_mcq_quiz_question($quiz_category);
     $count=0;
     if($quiz_search_results){
-        echo '<div id="ten-countdown" style=" display:inline-block; float:right;margin:15px; background-color:red; color:white; padding:10px;"></div><hr>';
-        echo '<form method="post" class="form-inline">';
+      
+        echo '<p class="fx10">'.$quiz_category.' <span style="float:right;" id="countdown" class="countdown-timer"> </span></p>';
+        echo '<hr><form method="post" class="form-inline">';
 
         foreach( $quiz_search_results as $result ) { 
             $count++;
             //echo $result->question;
             
     echo <<<QUIZ
-    <div class="quiz">
-        <p>Question $count : <span class="float-right" style="float:right;"> 2 points </span></p>
-        <div class="quiz-question">
-            <p> $result->question</p>
-            <div class="quiz-radio">
-                <input type="radio" class="form-control" value="1" name="answer_$result->id" ><span >$result->option1</span><br>
-                <input type="radio" class="form-control" value="2" name="answer_$result->id" ><span >$result->option2</span><br>
-                <input type="radio" class="form-control" value="3" name="answer_$result->id" ><span >$result->option3</span><br>
-                <input type="radio" class="form-control" value="4" name="answer_$result->id" ><span >$result->option4</span><br>
+    
+        <div class="quiz">
+            <p>Question $count : <span style="float:right;"> 2 points </span></p>
+            <div class="quiz-question">
+                <p> $result->question</p>
+                <div class="quiz-radio">
+                    <input type="radio" class="form-control" value="1" name="answer_$result->id" ><span >$result->option1</span><br>
+                    <input type="radio" class="form-control" value="2" name="answer_$result->id" ><span >$result->option2</span><br>
+                    <input type="radio" class="form-control" value="3" name="answer_$result->id" ><span >$result->option3</span><br>
+                    <input type="radio" class="form-control" value="4" name="answer_$result->id" ><span >$result->option4</span><br>
+                </div>
             </div>
-        </div>
-    </div>                                      
+        </div> 
     QUIZ;
     }
 }
 ?>
-        <div class="quiz quiz-form">
+    <div class="quiz quiz-form">
             <input type="text"  class="form-control " name="username" required placeholder="Enter Name">
             <input type="email" class="form-control m-2"  name="email" required placeholder="Enter Email">
             <input type="submit" class="btn btn-primary border-3"  name="mcq_daily_quiz_form" value="Submit Answer">
         </div>
     </form>
-</section>
+</section>     
 <?php 
 //submit quiz answer
 if(isset($_POST['mcq_daily_quiz_form'])){
@@ -105,7 +108,7 @@ function countdown( elementName, minutes, seconds )
     updateTimer();
 }
 
-countdown( "ten-countdown", 15, 0 );
+countdown( "countdown", 15, 0 );
 
 </script>
 
@@ -114,5 +117,4 @@ countdown( "ten-countdown", 15, 0 );
     if(window.history.replaceState) {
         window.history.replaceState(null,null,window.location.href);
     }
-
 </script>
